@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgView2"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        android:contentDescription="@string/toview" />
+
+    <Button
+        android:id="@+id/upload2"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:layout_below="@+id/btnNav2Capture2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="263dp"
+        android:onClick="loadImageFromGallery"
+        android:text="@string/to_upload" />
+
+    <Button
+        android:id="@+id/btnNav2Capture2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgView"
+        android:layout_marginTop="28dp"
+        android:text="@string/to_capture" />
+
+</RelativeLayout>

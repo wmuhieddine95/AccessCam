@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "665995203722",
+    "firebase_url": "https://accesscam-32a6b.firebaseio.com",
+    "project_id": "accesscam-32a6b",
+    "storage_bucket": "accesscam-32a6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665995203722:android:291e7a90b5526230624973",
+        "android_client_info": {
+          "package_name": "com.example.accesscam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665995203722-r4gkmob371vsgb03lg6r0cagd1k1loro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO9o4XEeE3WR3flatOCBX30SqYDBQv0oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665995203722-r4gkmob371vsgb03lg6r0cagd1k1loro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
