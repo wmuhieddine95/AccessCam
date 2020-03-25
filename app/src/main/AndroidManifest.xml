@@ -41,10 +41,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".VisionApiActivity" />
-        <activity android:name=".PrimaryActivity" />
+        <activity android:name=".ForTestsOnly.VisionApiActivity" />
+        <activity android:name=".ForTestsOnly.PrimaryActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ForTestsOnly.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

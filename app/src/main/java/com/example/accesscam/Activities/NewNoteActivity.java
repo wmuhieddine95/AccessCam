@@ -1,11 +1,8 @@
 package com.example.accesscam.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,13 +12,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.accesscam.MainActivity;
 import com.example.accesscam.Models.GetRes;
 import com.example.accesscam.Models.Line;
 import com.example.accesscam.Models.Lines;
 import com.example.accesscam.Models.Note;
 import com.example.accesscam.Models.Url;
-import com.example.accesscam.Network.FilePath;
 import com.example.accesscam.Network.NetworkClient;
 import com.example.accesscam.R;
 import com.example.accesscam.Services.ComputerVisionService;

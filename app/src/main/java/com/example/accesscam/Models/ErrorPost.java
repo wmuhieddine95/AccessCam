@@ -1,6 +1,6 @@
 package com.example.accesscam.Models;
 
-import com.example.accesscam.VisionApiActivity;
+import com.example.accesscam.ForTestsOnly.VisionApiActivity;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
