@@ -6,4 +6,54 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDarkBlue">#000267</color>
+    <color name="bright_pink">#FF007F</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF7F00</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="chartreuse">#7FFF00</color>
+    <color name="green">#00FF00</color>
+    <color name="spring_green">#00FF7F</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="azure">#007FFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="violet">#7F00FF</color>
+    <color name="magenta">#FF00FF</color>
+        <string-array name="colorname">
+            <item>@color/colorPrimary</item>
+            <item>@color/colorAccent</item>
+            <item>@color/colorBlack</item>
+            <item>@color/colorWhite</item>
+            <item>@color/colorDarkBlue</item>
+            <item>@color/bright_pink</item>
+            <item>@color/red</item>
+            <item>@color/orange</item>
+            <item>@color/yellow</item>
+            <item>@color/chartreuse</item>
+            <item>@color/green</item>
+            <item>@color/spring_green</item>
+            <item>@color/cyan</item>
+            <item>@color/azure</item>
+            <item>@color/blue</item>
+            <item>@color/violet</item>
+            <item>@color/magenta</item>
+        </string-array>
+        <array name="colorvalue">
+            <item>#008577</item>
+            <item>#D81B60</item>
+            <item>#000000</item>
+            <item>#FFFFFF</item>
+            <item>#000267</item>
+            <item>#FF007F</item>
+            <item>#FF0000</item>
+            <item>#FF7F00</item>
+            <item>#FFFF00</item>
+            <item>#7FFF00</item>
+            <item>#00FF00</item>
+            <item>#00FF7F</item>
+            <item>#00FFFF</item>
+            <item>#007FFF</item>
+            <item>#0000FF</item>
+            <item>#7F00FF</item>
+            <item>#FF00FF</item>
+        </array>
 </resources>

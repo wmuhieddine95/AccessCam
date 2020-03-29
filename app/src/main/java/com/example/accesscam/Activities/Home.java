@@ -25,16 +25,16 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.accesscam.Adapters.ColorsRVAdapter;
 import com.example.accesscam.Fragments.DownloadFragment;
 import com.example.accesscam.Fragments.HomeFragment;
-import com.example.accesscam.Fragments.SendFragment;
-import com.example.accesscam.Fragments.ShareFragment;
+import com.example.accesscam.Fragments.SettingsFragment;
 import com.example.accesscam.Models.GoogleImgs;
 import com.example.accesscam.Models.GoogleImgsRes;
 import com.example.accesscam.Models.Note;
-import com.example.accesscam.Network.ImagesRVAdapter;
+import com.example.accesscam.Adapters.ImagesRVAdapter;
 import com.example.accesscam.Network.NetworkClient;
-import com.example.accesscam.Network.RecyclerViewAdapter;
+import com.example.accesscam.Adapters.RecyclerViewAdapter;
 import com.example.accesscam.R;
 import com.example.accesscam.Services.GoogleImgsService;
 import com.example.accesscam.Services.PostMsService;
@@ -67,43 +67,38 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener/*,
-        CaptureFragment.CaptureListener*/, HomeFragment.NoteListener, DownloadFragment.DownloadListener {
+        CaptureFragment.CaptureListener*/, HomeFragment.NoteListener, DownloadFragment.DownloadListener
+, SettingsFragment.SettingListener {
 
     private static final String TAG = "DB";
     //Fragments
     private HomeFragment homeFragment;
-    private GalleryFragment galFragment;
     private DownloadFragment downloadFragment;
-    private SendFragment sendFragment;
-    private ShareFragment shareFragment;
+    private SettingsFragment settingsFragment;
 
     //Outcome
     private int MY_PERMISSIONS_REQUEST=10;
-    private String filePath;
     FirebaseFirestore db;
     DatabaseReference reference;
     //RecyclerView
-
-    public static final String NOW_NOTE= "NOW_NOTE";
-    public static final String GALIM_CONVERT= "GALIM_CONVERT";
-    public static final String IMAGE_CONVERT= "IMAGE_CONVERT";
-    public String galIm="false";
-    public byte[] imageBytes;
     public String capIm="";
     public String opLocation;
-    public String outputFromMs;
     public File capFile;
     private static int RESULT_LOAD_IMG = 1;
     private static final int CAPTURE_IMAGE_REQUEST=100;
-    private boolean gallaryImPicked;
     private Retrofit retrofit;
     private DrawerLayout drawerLayout;
+    //private int[] items;
+    //private String[] cnames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        //Settings Values
+        //items = getResources().getIntArray(R.array.colorvalue);
+        //cnames = getResources().getStringArray(R.array.colorname);
+        //Toast.makeText(getApplicationContext(),"First Colors is: "+items[0],Toast.LENGTH_LONG).show();
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -143,14 +138,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 replaceFragment(new HomeFragment());
                 break;
             case R.id.cam_image:
-                //replaceFragment(new CaptureFragment());
                 onCapture();
                 break;
             case R.id.gal_image:
-                //replaceFragment(new GalleryFragment());
                 loadImageFromGallery();
-                if(gallaryImPicked)
-
                 break;
             case R.id.url_image:
                 replaceFragment(new DownloadFragment());
@@ -159,7 +150,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 logout();
                 break;
             case R.id.settings_image:
-                replaceFragment(new ShareFragment());
+                replaceFragment(new SettingsFragment());
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -207,16 +198,16 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         else if (resultCode == RESULT_OK) {
             try {
                 //Uri imageUri = data.getData();
+                //Copying file in gallery to the app directory in order to use it
                 InputStream inputStream = getContentResolver().openInputStream(data.getData());
                 capFile=inputStreamToFile(inputStream);
                 Toast.makeText(Home.this,"CopiedFile Size: "+capFile.length(), Toast.LENGTH_LONG);
-                //For this conversion Recommended to create FilePath Class
-                //Source: https://stackoverflow.com/questions/45520599/creating-file-from-uri/45520771
-                //capFile= new File(FilePath.getPath(getApplicationContext(),imageUri));
-                gallaryImPicked=true;
+                //Convert from Uri to file (Android 10 doesn't give permission to files not created by the app itself)
+                    //For this conversion Recommended to create FilePath Class
+                    //Source: https://stackoverflow.com/questions/45520599/creating-file-from-uri/45520771
+                    //capFile= new File(FilePath.getPath(getApplicationContext(),imageUri));
                 new GetOpKeyForCapImage().execute(capFile);
-                //    Toast.makeText(Home.this, capFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
-            }
+                }
             catch (FileNotFoundException e){Log.e("GalIm", "File Not Found");} catch (IOException e) {
                 Log.e("GalIm", "IO Error");;
             }
@@ -308,6 +299,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Log.i("InCreateFile",image.getAbsolutePath());
         return image;
     }
+
     private class GetOpKeyForCapImage extends AsyncTask<File,Integer,String> {
 
         @Override
@@ -366,6 +358,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Toast.makeText(this,de.getMessage(),Toast.LENGTH_LONG);
     }
 
+    //Settings
+    @Override
+    public void setAdapterColor(RecyclerView rv) {
+        rv.setAdapter(new ColorsRVAdapter(getApplicationContext()));
+    }
+
+    //
+
     //Download Fragment Listener
     @Override
     public void searchQuery(RecyclerView rv, String s) {
@@ -420,5 +420,4 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         outStream.write(buffer);
         return targetFile;
     }
-
  }

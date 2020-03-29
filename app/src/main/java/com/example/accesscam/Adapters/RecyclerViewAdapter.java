@@ -1,4 +1,4 @@
-package com.example.accesscam.Network;
+package com.example.accesscam.Adapters;
 
 import android.content.Context;
 import android.content.Intent;

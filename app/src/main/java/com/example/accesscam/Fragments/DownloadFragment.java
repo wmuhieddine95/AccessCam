@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.accesscam.Adapters.ImagesRVAdapter;
 import com.example.accesscam.Models.ImageUrl;
 import com.example.accesscam.Network.NetworkClient;
 import com.example.accesscam.R;
@@ -50,7 +51,7 @@ public class DownloadFragment extends Fragment implements TextWatcher {
         //RecyclerView
         downloadRecyclerView = getActivity().findViewById(R.id.download_recyclerview);
         downloadRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
+        }
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
